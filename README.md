@@ -3,7 +3,7 @@
 Based on [this](https://docs.microsoft.com/en-us/azure/azure-functions/durable/quickstart-js-vscode) quickstart guide.
 
 Prequisites
-  * See quickstart guide above
+  * See [prerequisites](https://docs.microsoft.com/en-us/azure/azure-functions/durable/quickstart-js-vscode#prerequisites) in quickstart guide above 
   * You may need to add WEBSITE_HOSTNAME=localhost:7071 to your environment (e.g. add to ~/.bashrc on MacOS, see [here](https://stackoverflow.com/questions/53812188/cannot-run-azure-durable-function-locally-via-visual-studio-code) for more details as to when and why).
   * A `local.settings.file` (see [below](#sample-localsettingsfile) for a sample)
 
