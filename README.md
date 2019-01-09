@@ -9,8 +9,8 @@ Prequisites
 
 To run in VS Code:
   * F5 (or ^F5 to run without debugging)
-  * Using curl/postman/etc POST to http://localhost:7071/api/orchestrators/OrchestratorFunction. This will return a 202 and a status check URL in a Location header (or alternatively in the body of the response). 
-  * Use the Location URL to see status and results
+  * Using curl/postman/etc POST to http://localhost:7071/api/orchestrators/OrchestratorFunction. This will return a 202 and a status check URL in a Location header (or alternatively as 'statusQueryGetUri' in the body of the response). 
+  * Use the Location/statusQueryGetUri URL to see status and results
 
 Note: found a couple of errors in the quick start guide:
   * Renamed E1_SayHello to SayHello in `OrchestratorFunction/index.js`
