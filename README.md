@@ -4,7 +4,7 @@ Based on [this](https://docs.microsoft.com/en-us/azure/azure-functions/durable/q
 
 Prequisites
   * See quickstart guide above
-  * Add WEBSITE_HOSTNAME=localhost:7071 to your environment (e.g. add to ~/.bashrc on MacOS, see [here](https://stackoverflow.com/questions/53812188/cannot-run-azure-durable-function-locally-via-visual-studio-code) for more details
+  * You may need to add WEBSITE_HOSTNAME=localhost:7071 to your environment (e.g. add to ~/.bashrc on MacOS, see [here](https://stackoverflow.com/questions/53812188/cannot-run-azure-durable-function-locally-via-visual-studio-code) for more details as to when and why).
   * A `local.settings.file` (see [below](#sample-localsettingsfile) for a sample)
 
 To run in VS Code:
