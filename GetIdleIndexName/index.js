@@ -32,6 +32,8 @@ module.exports = async function(context) {
 
     jsonResponse = JSON.parse(response);
 
+    console.log(jsonResponse.properties);
+
     const activeServiceUrl = properties.serviceUrl;
 
     const urlRegex = /(https:\/\/.*\/indexes\/)(.*)(\/docs\/)/u;
