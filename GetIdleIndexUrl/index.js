@@ -9,7 +9,7 @@ async function getIndexingDetails() {
 
   function getIndexUrl(index, deployment) {
     const indexName = getIndexName(index, deployment);
-    return `${index.baseUrl}${indexName}`
+    return `${index.baseUrl}${indexName}${index.trailingPath}`
   }
 
   function getIdleIndexDeployment(activeDeployment) {
@@ -27,13 +27,14 @@ async function getIndexingDetails() {
 
   const activeServiceUrl = response.properties.serviceUrl;
 
-  const urlRegex = /(https:\/\/.*\/indexes\/)(.*)\/docs\//;
-  const indexNameRegex = /(.*)-([0-9]+-[0-9]+)-(a|b|)-(dev|int|prod)/;
+  const urlRegex = /(https:\/\/.*\/indexes\/)(.*)(\/docs\/)/;
+  const indexNameRegex = /(.*)-([0-9]+-[0-9]+)-(a|b)-(dev|int|prod)/;
 
   const indexName =  activeServiceUrl.match(urlRegex)[2];
 
   const indexingDetails = {
     "baseUrl": activeServiceUrl.match(urlRegex)[1],
+    "trailingPath": activeServiceUrl.match(urlRegex)[3],
     "name": indexName.match(indexNameRegex)[1],
     "version": indexName.match(indexNameRegex)[2],
     "activeDeployment": indexName.match(indexNameRegex)[3],
@@ -84,5 +85,5 @@ module.exports = async function(context) {
   await copyIndexDefinition(indexingDetails.active.url, indexingDetails.idle.url);
   await updateIndexerTargetIndex(indexingDetails.idle.name);
 
-  return indexingDetails.idle.name;
+  return indexingDetails.idle.url;
 };

@@ -26,6 +26,5 @@ module.exports = async function (context, req) {
     context.log(`Starting orchestration with ID = '${instanceId}'.`);
     await client.startNew(functionName, instanceId, req.body);
     return client.createCheckStatusResponse(req, instanceId);
-    // return client.createCheckStatusResponse(context.bindingData.req, instanceId);
   }
 };
