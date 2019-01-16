@@ -8,19 +8,19 @@ module.exports = async function (context, req) {
 
   // getStatus throws an exception if instanceId does not exist. This is a bug in azure-durable-functions
   // https://github.com/Azure/azure-functions-durable-js/issues/40
-  const instances = await client.getStatusBy(undefined, undefined, ['Running'])
+  const instances = await client.getStatusAll()
 
-  isInstanceRunning = instances.some((i) => { 
-    return i.instanceId == instanceId && i.runtimeStatus == 'Running'
+  runningInstanceExists = instances.some((i) => {
+    return i.instanceId == instanceId && i.runtimeStatus === 'Running'
   });
 
   // console.log(instances.map( (i)=> { return i.instanceId }));
   // console.log([instanceId, isInstanceRunning]);
 
-  if (isInstanceRunning) {
+  if (runningInstanceExists) {
     return {
       status: 409,
-      body: `An instance with ID '${instanceId}' already exists.`,
+      body: `An instance with ID '${instanceId}' is already running.`,
     };
   } else {
     context.log(`Starting orchestration with ID = '${instanceId}'.`);
